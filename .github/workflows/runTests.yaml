@@ -23,12 +23,14 @@ jobs:
     steps:
       - name: Checkout development repo and start the server
         run: |
+          brew install node
           git clone https://github.com/MindfulMichaelJames/star-wars.git
           cd star-wars
           npm install yarn
           yarn install
           yarn build
-          yarn start
+          yarn start >/dev/null &
+          cd ..
 
       - name: Checkout repository
         uses: actions/checkout@v3
