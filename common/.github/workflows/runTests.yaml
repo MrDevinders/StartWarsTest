@@ -1,0 +1,49 @@
+name: Run start-wars demo web and api tests
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  run_Tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest]
+        python-version:
+          - '3.11'
+          - 'pypy-3.9'
+
+    permissions:
+      checks: write
+
+    name: Test web and api
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup python
+        uses: actions/setup-python@v4
+          with:
+            python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          brew install --cask google-chrome
+          python -m pip install --upgrade pip
+          python -m pip install selenium
+          python -m pip install webdriver_manager
+          python -m pip install -U pytest
+          python -m pip install pytest-html
+          python -m pip install requests
+
+      - name: Run the tests
+        run: |
+          python -m pytest -v -m web
+          python -m pytest -v -m api
+
+      - name: Publish report
+        run: |
