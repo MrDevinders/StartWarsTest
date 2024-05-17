@@ -10,6 +10,7 @@ class Test_ViewMovie_CheckSpecies:
 
     def setup_class(self):
         self.driver.get(BaseUrl)
+        self.driver.implicitly_wait(ImplicitWait)
         self.home_page = HomePage(self.driver)
         self.movies_page = MoviesPage(self.driver)
     

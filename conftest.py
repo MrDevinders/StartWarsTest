@@ -7,6 +7,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import pytest
 
 BaseUrl = "http://localhost:3000/"
+ImplicitWait = 30
 
 @pytest.fixture(scope="class", autouse=True)
 def browser_setup(request):
