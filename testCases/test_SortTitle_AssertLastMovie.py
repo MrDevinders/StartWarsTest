@@ -9,6 +9,7 @@ class Test_SortTitle_AssertLastMovie:
 
     def setup_class(self):
         self.driver.get(BaseUrl)
+        self.driver.implicitly_wait(ImplicitWait)
         self.home_page = HomePage(self.driver)
 
     @pytest.mark.web
