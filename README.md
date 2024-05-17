@@ -45,3 +45,7 @@ pytest -v -m web
 For api tests:
 
 pytest -v -m api
+
+After running the tests, the report can be viewed under:
+
+/star-wars-assignment/reports
