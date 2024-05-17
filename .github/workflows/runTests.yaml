@@ -32,8 +32,8 @@ jobs:
           yarn start >/dev/null &
           cd ..
 
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      #      - name: Checkout repository
+      #        uses: actions/checkout@v3
 
       - name: Setup python
         uses: actions/setup-python@v4
@@ -52,6 +52,8 @@ jobs:
 
       - name: Run the tests
         run: |
+          git clone https://github.com/MrDevinders/StartWarsTest.git
+          cd star_wars_assignment
           python -m pytest -v
       #          python -m pytest -v -m web
       #          python -m pytest -v -m api
