@@ -21,6 +21,15 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+      - name: Checkout development repo and start the server
+        run: |
+          git clone https://github.com/MindfulMichaelJames/star-wars.git
+          cd star-wars
+          npm install yarn
+          yarn install
+          yarn build
+          yarn start
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
