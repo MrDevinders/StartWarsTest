@@ -12,8 +12,7 @@ jobs:
       matrix:
         os: [macos-latest]
         python-version:
-          - '3.11'
-          - 'pypy-3.9'
+          - "3.11"
 
     permissions:
       checks: write
