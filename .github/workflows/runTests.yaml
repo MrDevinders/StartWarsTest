@@ -41,8 +41,9 @@ jobs:
 
       - name: Run the tests
         run: |
-          python -m pytest -v -m web
-          python -m pytest -v -m api
+          python -m pytest -v
+      #          python -m pytest -v -m web
+      #          python -m pytest -v -m api
 
       - name: Publish report
         run: |
