@@ -53,7 +53,7 @@ jobs:
       - name: Run the tests
         run: |
           git clone https://github.com/MrDevinders/StartWarsTest.git
-          cd star_wars_assignment
+          cd StartWarsTest
           python -m pytest -v
       #          python -m pytest -v -m web
       #          python -m pytest -v -m api
