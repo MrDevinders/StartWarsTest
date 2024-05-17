@@ -22,8 +22,11 @@ requests 2.31.0 -> pip install requests
 
 After the installation, please run the following command from the terminal window:
 Go to /star-wars-assignment/
+
 For web tests:
+
 pytest -v -m web
 
 For api tests:
+
 pytest -v -m api
