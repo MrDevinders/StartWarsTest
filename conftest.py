@@ -9,6 +9,7 @@ import pytest
 BaseUrl = "http://localhost:3000/"
 ImplicitWait = 30
 
+
 @pytest.fixture(scope="class", autouse=True)
 def browser_setup(request):
     global driver
@@ -37,6 +38,8 @@ def browser_setup(request):
 
 @pytest.hookimpl(tryfirst=True)
 def pytest_configure(config):
+    global report_dir
+
     today = datetime.now()
     report_dir = Path("reports", today.strftime("%Y%m%d"))
     report_dir.mkdir(parents=True, exist_ok=True)
@@ -60,9 +63,15 @@ def pytest_runtest_makereport(item, call):
         xfail = hasattr(report, 'wasxfail')
 #        if (report.skipped and xfail) or (report.failed and not xfail):
         file_name = report.nodeid.replace("::", "_") + ".png"
+
+        scr_dir = Path(report_dir, "screens")
+        scr_dir.mkdir(parents=True, exist_ok=True)
+        scr_file = "screens/" + file_name.split('/')[1]
+        file_name = scr_dir / f"{file_name.split('/')[1]}"
+
         _capture_screenshot(file_name)
         if file_name:
-            html = '<div><img src="%s" alt="screenshot" style=width:304px;height:228px; onclick="window.open(this.src)" align="right"/></div>' % file_name
+            html = '<div><img src="%s" alt="screenshot" style=width:304px;height:228px; onclick="window.open(this.src)" align="right"/></div>' % scr_file
             extra.append(pytest_html.extras.html(html))
 
         report.extra = extra
