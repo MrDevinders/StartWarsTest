@@ -57,7 +57,7 @@ jobs:
           python -m pytest -v
           killall node
           git add --all
-      #          git commit -m "Report"
+          git commit -m "Report"
       #          git push
       #          python -m pytest -v -m web
       #          python -m pytest -v -m api
