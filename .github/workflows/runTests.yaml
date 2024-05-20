@@ -56,11 +56,11 @@ jobs:
           cd StartWarsTest
           python -m pytest -v
           killall node
-          git config user.name MrDevinders
-          git config user.email MrDevinders@Gmail.com
+          git config --global user.name MrDevinders
+          git config --global user.email MrDevinders@Gmail.com
           git add --all
           git commit -m "Report"
-          git push
+      #          git push
       #          python -m pytest -v -m web
       #          python -m pytest -v -m api
 
